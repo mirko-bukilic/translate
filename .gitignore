@@ -1,0 +1,15 @@
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+composer.phar
+vendor
+test
+
+.buildpath
+.project
+.settings
