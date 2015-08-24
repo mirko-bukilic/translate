@@ -5,32 +5,25 @@ namespace G4\Translate;
 class Locale
 {
 
-    const ENCODING = 'UTF-8';
-
-    private $locale;
-
-    private $domain;
-
-    private $path;
+    /**
+     * @var Options
+     */
+    private $data;
 
     /**
-     * @param string $locale
-     * @param string $domain
-     * @param string $path
+     * @param Options $data
      */
-    public function __construct($locale, $domain, $path)
+    public function __construct(Options $data)
     {
-        $this->locale = $locale;
-        $this->domain = $domain;
-        $this->path   = $path;
+        $this->data = $data;
     }
 
     public function set()
     {
-        putenv("LC_ALL={$this->locale}");
-        setlocale(LC_ALL, $this->locale);
-        bindtextdomain($this->domain, $this->path);
-        bind_textdomain_codeset($this->domain, self::ENCODING);
-        textdomain($this->domain);
+        putenv("LC_ALL={$this->data->getLocale()}");
+        setlocale(LC_ALL, $this->data->getLocale());
+        bindtextdomain($this->data->getDomain(), $this->data->getPath());
+        bind_textdomain_codeset($this->data->getDomain(), $this->data->getEncoding());
+        textdomain($this->data->getDomain());
     }
 }
