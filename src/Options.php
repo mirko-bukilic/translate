@@ -84,7 +84,7 @@ class Options
      */
     public function setPath($path)
     {
-        $this->path = realpath($this->path);
+        $this->path = realpath($path);
         return $this;
     }
 }
