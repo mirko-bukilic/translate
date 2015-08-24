@@ -2,12 +2,22 @@
 
 namespace G4\Translate;
 
+use G4\Constants\Time;
+
 class Options
 {
 
     const DEFAULT_LOCALE = 'en_US';
 
     const ENCODING = 'UTF-8';
+
+    const DEFAULT_COOKIE_LIFETIME = Time::DAY_30;
+
+
+    /**
+     * @var int
+     */
+    private $cookieLifetime;
 
     /**
      * @var string
@@ -23,6 +33,19 @@ class Options
      * @var string
      */
     private $path;
+
+    /**
+     * @var true
+     */
+    private $rememberInCookie;
+
+    public function cookieExpiresAt()
+    {
+        return time()
+            + ($this->cookieLifetime === null
+                ? self::DEFAULT_COOKIE_LIFETIME
+                : $this->cookieLifetime);
+    }
 
     /**
      * @return string
@@ -45,9 +68,9 @@ class Options
      */
     public function getLocale()
     {
-        return $this->locale === null
-            ? self::DEFAULT_LOCALE
-            : $this->locale;
+        return $this->isLocaleSet()
+            ? $this->locale
+            : self::DEFAULT_LOCALE;
     }
 
     /**
@@ -56,6 +79,30 @@ class Options
     public function getPath()
     {
         return $this->path;
+    }
+
+    public function isLocaleSet()
+    {
+        return $this->locale !== null;
+    }
+
+    /**
+     * @return \G4\Translate\Options
+     */
+    public function rememberInCookie()
+    {
+        $this->rememberInCookie = true;
+        return $this;
+    }
+
+    /**
+     * @param int $cookieLifetime
+     * @return \G4\Translate\Options
+     */
+    public function setCookieLifetime($cookieLifetime)
+    {
+        $this->cookieLifetime = $cookieLifetime;
+        return $this;
     }
 
     /**
@@ -86,5 +133,13 @@ class Options
     {
         $this->path = realpath($path);
         return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function shouldRememberInCookie()
+    {
+        return (bool) $this->rememberInCookie;
     }
 }
