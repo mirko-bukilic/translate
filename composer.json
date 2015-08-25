@@ -26,7 +26,7 @@
     },
     "bin": [
         "bin/translate", 
-        "bin/extract"
+        "bin/translate-extract"
     ],
     "require-dev": {
 
