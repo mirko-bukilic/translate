@@ -1,6 +1,6 @@
 <?php
 
-namespace G4\Translate;
+namespace G4\Translate\Locale;
 
 use G4\Constants\Time;
 class Repository

@@ -1,6 +1,6 @@
 <?php
 
-namespace G4\Translate;
+namespace G4\Translate\Locale;
 
 use G4\Constants\Time;
 
@@ -87,7 +87,7 @@ class Options
     }
 
     /**
-     * @return \G4\Translate\Options
+     * @return \G4\Translate\Locale\Options
      */
     public function rememberInCookie()
     {
@@ -97,7 +97,7 @@ class Options
 
     /**
      * @param int $cookieLifetime
-     * @return \G4\Translate\Options
+     * @return \G4\Translate\Locale\Options
      */
     public function setCookieLifetime($cookieLifetime)
     {
@@ -107,7 +107,7 @@ class Options
 
     /**
      * @param string $domain
-     * @return \G4\Translate\Options
+     * @return \G4\Translate\Locale\Options
      */
     public function setDomain($domain)
     {
@@ -117,7 +117,7 @@ class Options
 
     /**
      * @param string $locale
-     * @return \G4\Translate\Options
+     * @return \G4\Translate\Locale\Options
      */
     public function setLocale($locale)
     {
@@ -127,7 +127,7 @@ class Options
 
     /**
      * @param string $path
-     * @return \G4\Translate\Options
+     * @return \G4\Translate\Locale\Options
      */
     public function setPath($path)
     {
