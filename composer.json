@@ -24,6 +24,10 @@
     "autoload": {
         "psr-4": {"G4\\Translate\\": "src/"}
     },
+    "bin": [
+        "bin/translate", 
+        "bin/extract"
+    ],
     "require-dev": {
 
     },
