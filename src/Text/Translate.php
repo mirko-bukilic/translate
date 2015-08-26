@@ -24,13 +24,12 @@ class Translate
      */
     private function convert(\SplFileInfo $file)
     {
-        $cmd = [
+        (new Cmd([
             'msgfmt',
             realpath($file->getPath()) . DIRECTORY_SEPARATOR . $file->getBasename(),
             '-o',
             realpath($file->getPath()) . DIRECTORY_SEPARATOR . $file->getBasename('.po') . '.mo',
-        ];
-        echo shell_exec(join(' ', $cmd));
+        ]))->execute();
     }
 
     private function iterateTroughLocale()

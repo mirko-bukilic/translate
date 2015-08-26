@@ -1,3 +1,26 @@
 #!/usr/bin/env php
 <?php
-    echo 'extract';
+
+chdir(realpath(dirname(__DIR__)."/../../../"));
+
+require_once './vendor/autoload.php';
+
+use G4\Translate\Text\Extract;
+use G4\Commando\Cli;
+
+$cli = new Cli();
+$cli->version('x.x.x');
+$cli->option()->short("t")
+              ->long("templates")
+              ->desc('templates path');
+$cli->option()->short("w")
+              ->long("work")
+              ->desc('work tmp path');
+$cli->option()->short("g")
+              ->long("generate")
+              ->desc('generated po file path');
+$cli->option()->short("d")
+              ->long("domain")
+              ->desc('domain name');
+              
+new Extract($cli->value('templates'), $cli->value('work'), $cli->value('generate'), $cli->value('domain'));
