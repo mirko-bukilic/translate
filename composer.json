@@ -33,6 +33,7 @@
     },
     "require": {
         "php"          : ">=5.4",
+        "g4/commando"  : "*",
         "g4/constants" : "*"
     }
 }
