@@ -1,3 +1,17 @@
 #!/usr/bin/env php
 <?php
-    echo 'translate';
+
+chdir(realpath(dirname(__DIR__)."/../../../"));
+
+require_once './vendor/autoload.php';
+
+use G4\Translate\Text\Translate;
+use G4\Commando\Cli;
+
+$cli = new Cli();
+$cli->version('x.x.x');
+$cli->option()->short("p")
+              ->long("path")
+              ->desc('locale path');
+
+new Translate($cli->value('path'));
