@@ -31,10 +31,17 @@ Convert .po files to .mo
 ```sh
 ./vendor/bin/translate --path /path/to/locale/files
 ```
+where --path is path to your locale folder
+
 Extract template strings
 ```sh
 ./vendor/bin/translate-extract -t /path/to/templates -w /path/to/tmp -g /path/to/locale/files -d myDomain
 ```
+where:
+-t is path to folder that contains templates
+-w is path to temp folder
+-g is path to folder where myDomain.po file with strings will be generated
+-d domain name
 
 
 ## Development
