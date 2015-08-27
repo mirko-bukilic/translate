@@ -38,10 +38,10 @@ Extract template strings
 ./vendor/bin/translate-extract -t /path/to/templates -w /path/to/tmp -g /path/to/locale/files -d myDomain
 ```
 where:
--t is path to folder that contains templates
--w is path to temp folder
--g is path to folder where myDomain.po file with strings will be generated
--d domain name
+* -t is path to folder that contains templates
+* -w is path to temp folder
+* -g is path to folder where myDomain.po file with strings will be generated
+* -d domain name
 
 
 ## Development
