@@ -1,7 +1,10 @@
 Translate
 ==========
 
-> Translate - i18n php library
+> Translate - i18n php library. Wrapper around Twig i18n Extension. 
+* Configuration of the gettext extension
+* Utlity tool to generate .mo files
+* Utility tool for extracting template strings
 
 ## Install
 
@@ -10,9 +13,16 @@ Translate
 ```sh
 composer require g4/translate
 ```
+## Resources
+* Twig The i18n Extension http://twig.sensiolabs.org/doc/extensions/i18n.html
+* PHP gettext extension http://fr.php.net/manual/en/function.gettext.php
+
+## Requirements
+* "twig/twig" https://packagist.org/packages/twig/twig
+* "twig/extensions" https://packagist.org/packages/twig/extensions
 
 ## Usage
-Set locale early in the program
+Set locale early in the program before rendering any internationalized template.
 
 ```php
 use G4\Translate\Locale\Locale;
