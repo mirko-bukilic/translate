@@ -37,7 +37,7 @@ class TransJson
     private function createJsonFile($trans, $langPath)
     {
         file_put_contents(
-            $this->path->getJsonPath($langPath),
+            $this->path->getJsonPath(basename($langPath)),
             json_encode($trans)
         );
     }

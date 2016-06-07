@@ -12,13 +12,20 @@ use G4\Commando\Cli;
 
 $cli = new Cli();
 $cli->version('x.x.x');
-$cli->option()->short("p")
+
+$cli->option()->short("n")
     ->long("name")
     ->desc('name');
-$cli->option()->short("p")
-    ->long("path")
+
+$cli->option()->short("s")
+    ->long("src")
     ->desc('locale path');
 
+$cli->option()->short("d")
+    ->long("destination")
+    ->desc('destination path');
+
+
 (new TransJson(
-    new TransPath($cli->value('path'), new TransName($cli->value('name')))
+    new TransPath(new TransName($cli->value('name')), $cli->value('src'),  $cli->value('destination'))
 ))->execute();

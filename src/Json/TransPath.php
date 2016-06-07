@@ -10,30 +10,36 @@ class TransPath
     /**
      * @var string
      */
-    private $path;
+    private $src;
+
+    /**
+     * @var string
+     */
+    private $desctination;
 
     /**
      * @var TransName
      */
     private $name;
 
-    public function __construct($path, TransName $name)
+    public function __construct(TransName $name, $src, $destination = null)
     {
-        if(empty($path)){
+        if(empty($src)){
             throw new \Exception('source path is required');
         }
 
-        if(!is_dir(realpath($path))){
+        if(!is_dir(realpath($src))){
             throw new \Exception('wrong path');
         }
 
-        $this->path = realpath($path);
+        $this->src = realpath($src);
+        $this->desctination = empty($destination) ? null : realpath($destination);
         $this->name = $name;
     }
 
     public function getDirs()
     {
-        return glob($this->path . '/*' , GLOB_ONLYDIR);
+        return glob($this->src . '/*' , GLOB_ONLYDIR);
     }
 
     public function getPoFile($langPath)
@@ -41,8 +47,19 @@ class TransPath
         return file_get_contents($langPath . self::LC_MESSAGES . (string) $this->name . '.po');
     }
 
-    public function getJsonPath($langPath)
+    public function getJsonPath($lang)
     {
-        return $langPath . self::LC_MESSAGES . $this->name . '.json';
+        return empty($this->desctination)
+            ? $this->src . '/' . $lang  . self::LC_MESSAGES . $this->name . '.json'
+            : $this->getDestPath($lang);
+    }
+
+    private function getDestPath($lang)
+    {
+        $langPath = $this->desctination . '/' . $lang . self::LC_MESSAGES;
+        if(!is_dir($langPath) && !mkdir($langPath, 0777, true)){
+            throw new \Exception($langPath . ' folder is missing');
+        }
+        return $langPath . $this->name . '.json';
     }
 }
