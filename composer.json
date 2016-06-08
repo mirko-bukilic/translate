@@ -25,8 +25,9 @@
         "psr-4": {"G4\\Translate\\": "src/"}
     },
     "bin": [
-        "bin/translate", 
-        "bin/translate-extract"
+        "bin/translate",
+        "bin/translate-extract",
+        "bin/translate-json"
     ],
     "require-dev": {
 
