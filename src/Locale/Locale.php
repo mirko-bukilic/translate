@@ -58,6 +58,8 @@ class Locale
     private function setEnvironment()
     {
         putenv("LC_ALL={$this->getLocale()}");
+        putenv("LANGUAGE={$this->getLocale()}");
+        putenv("LANG={$this->getLocale()}");
         setlocale(LC_ALL, $this->getLocale());
         bindtextdomain($this->options->getDomain(), $this->options->getPath());
         bind_textdomain_codeset($this->options->getDomain(), $this->options->getEncoding());
