@@ -11,11 +11,19 @@ class Translate
     private $localePath;
 
     /**
+     * @var bool
+     */
+    private $useFirst = false;
+
+    /**
      * @param string $localePath
      */
-    public function __construct($localePath)
+    public function __construct($localePath, $useFirst = null)
     {
         $this->localePath = realpath($localePath);
+        if($useFirst){
+            $this->useFirst = true;
+        }
         $this->concatenatePoFiles();
         $this->iterateTroughLocale();
     }
@@ -30,13 +38,21 @@ class Translate
             $path = $poFile->getPath();
             $filesToConcatenate .= realpath($poFile->getPath()) . DIRECTORY_SEPARATOR . $poFile->getBasename() . " ";
         }
-        (new Cmd([
+        $commandArray = $this->useFirst
+            ? [
                 'msgcat',
+                '--use-first',
                 '-o',
                 realpath($path) . DIRECTORY_SEPARATOR . 'translation.po',
                 $filesToConcatenate
             ]
-        ))->execute();
+            : [
+                'msgcat',
+                '-o',
+                realpath($path) . DIRECTORY_SEPARATOR . 'translation.po',
+                $filesToConcatenate
+            ];
+        (new Cmd($commandArray))->execute();
     }
 
     /**

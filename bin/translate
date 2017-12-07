@@ -14,4 +14,8 @@ $cli->option()->short("p")
               ->long("path")
               ->desc('locale path');
 
-new Translate($cli->value('path'));
+$cli->option()->short("uf")
+    ->long("use_first")
+    ->desc('use first trans');
+
+new Translate($cli->value('path'), $cli->value('use_first'));
