@@ -1,0 +1,111 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "7e72b278f8c804350560d69868579348",
+    "packages": [
+        {
+            "name": "g4/commando",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/g4code/commando.git",
+                "reference": "e93e0c913ab7ed583e5c353ae2155ec97f726899"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/g4code/commando/zipball/e93e0c913ab7ed583e5c353ae2155ec97f726899",
+                "reference": "e93e0c913ab7ed583e5c353ae2155ec97f726899",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "G4\\Commando\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Drasko Gomboc",
+                    "email": "drasko.gomboc@gmail.com"
+                },
+                {
+                    "name": "Dejan Samardzija",
+                    "email": "samardzijadejan@gmail.com"
+                },
+                {
+                    "name": "Ivan Krickovic",
+                    "email": "ivan.krickovic@gmail.com"
+                }
+            ],
+            "description": "PHP command-line interface",
+            "keywords": [
+                "cli",
+                "command-line",
+                "commando"
+            ],
+            "time": "2015-03-02T12:33:55+00:00"
+        },
+        {
+            "name": "g4/constants",
+            "version": "0.6.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/g4code/constants.git",
+                "reference": "eee25e9ca00481f1e96f2893e39f162852bda94e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/g4code/constants/zipball/eee25e9ca00481f1e96f2893e39f162852bda94e",
+                "reference": "eee25e9ca00481f1e96f2893e39f162852bda94e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "G4\\Constants\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dejan Samardzija",
+                    "email": "samardzija.dejan@gmail.com"
+                }
+            ],
+            "description": "G4 constants that are used for all day stuff and this is good way to organize them",
+            "keywords": [
+                "constants"
+            ],
+            "time": "2017-11-17T12:46:37+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}

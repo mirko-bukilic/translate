@@ -2,6 +2,8 @@
 
 namespace G4\Translate\Text;
 
+use G4\Translate\File;
+
 class Translate
 {
 
@@ -56,15 +58,17 @@ class Translate
     }
 
     /**
-     * @param \SplFileInfo $file
+     * @param File $file
      */
-    private function convert(\SplFileInfo $file)
+    private function convert(File $file)
     {
+        fputs(STDOUT, $file->getLocale() . "\n");
         (new Cmd([
             'msgfmt',
-            realpath($file->getPath()) . DIRECTORY_SEPARATOR . $file->getBasename(),
+            '-v',
+            $file->getInputFilePath(),
             '-o',
-            realpath($file->getPath()) . DIRECTORY_SEPARATOR . $file->getBasename('.po') . '.mo',
+            $file->getOutputFilePath(),
         ]))->execute();
     }
 
@@ -85,8 +89,14 @@ class Translate
 
     private function iterateTroughLocale()
     {
-        foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->localePath), \RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
-            $file->isFile() && $file->getBasename() == 'translation.po' && $this->convert($file);
+        $allFiles = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($this->localePath),
+            \RecursiveIteratorIterator::LEAVES_ONLY
+        );
+        foreach ($allFiles as $fileInfo) {
+            if ($fileInfo->isFile() && $fileInfo->getBasename() == 'translation.po') {
+                $this->convert(new File($fileInfo));
+            }
         }
     }
 }
