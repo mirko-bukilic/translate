@@ -40,6 +40,9 @@
         "g4/code-coverage"          : "1.*"
     },
     "scripts": {
+        "functional-test": [
+            "vendor/bin/phpunit -c tests/functional/phpunit.xml --colors=always --coverage-html tests/functional/coverage"
+        ],
         "unit-test": [
             "vendor/bin/phpunit -c tests/unit/phpunit.xml --colors=always --coverage-html tests/unit/coverage"
         ],
