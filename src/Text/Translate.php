@@ -3,6 +3,8 @@
 namespace G4\Translate\Text;
 
 use G4\Translate\File;
+use G4\Translate\Text\GetText\MsgCat;
+use G4\ValueObject\RelativePath;
 
 class Translate
 {
@@ -40,21 +42,14 @@ class Translate
             $path = $poFile->getPath();
             $filesToConcatenate[] = realpath($poFile->getPath()) . DIRECTORY_SEPARATOR . $poFile->getBasename();
         }
-        $commandArray = $this->useFirst
-            ? [
-                'msgcat',
-                '--use-first',
-                '-o',
-                realpath($path) . DIRECTORY_SEPARATOR . 'translation.po',
-                join(' ', $filesToConcatenate),
-            ]
-            : [
-                'msgcat',
-                '-o',
-                realpath($path) . DIRECTORY_SEPARATOR . 'translation.po',
-                join(' ', $filesToConcatenate),
-            ];
-        (new Cmd($commandArray))->execute();
+
+        $msgCat = new MsgCat($filesToConcatenate, new RelativePath(realpath($path), 'translation.po'));
+
+        if ($this->useFirst) {
+            $msgCat->useFirst();
+        }
+
+        (new Cmd($msgCat->format()))->execute();
     }
 
     /**
