@@ -35,10 +35,10 @@ class Translate
      */
     private function concatenate(array $poFiles)
     {
-        $filesToConcatenate = "";
+        $filesToConcatenate = [];
         foreach($poFiles as $poFile){
             $path = $poFile->getPath();
-            $filesToConcatenate .= realpath($poFile->getPath()) . DIRECTORY_SEPARATOR . $poFile->getBasename() . " ";
+            $filesToConcatenate[] = realpath($poFile->getPath()) . DIRECTORY_SEPARATOR . $poFile->getBasename();
         }
         $commandArray = $this->useFirst
             ? [
@@ -46,13 +46,13 @@ class Translate
                 '--use-first',
                 '-o',
                 realpath($path) . DIRECTORY_SEPARATOR . 'translation.po',
-                $filesToConcatenate
+                join(' ', $filesToConcatenate),
             ]
             : [
                 'msgcat',
                 '-o',
                 realpath($path) . DIRECTORY_SEPARATOR . 'translation.po',
-                $filesToConcatenate
+                join(' ', $filesToConcatenate),
             ];
         (new Cmd($commandArray))->execute();
     }
