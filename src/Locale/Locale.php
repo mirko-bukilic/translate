@@ -39,7 +39,7 @@ class Locale
 
     private function clearCookie()
     {
-        if (!$this->options->shouldRememberInCookie()) {
+        if ($this->options->shouldRememberInCookie()) {
             $this->repository->delete();
         }
         return $this;
