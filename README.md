@@ -1,7 +1,6 @@
 Translate
 ==========
 
-> Translate - i18n php library. Wrapper around Twig i18n Extension. 
 * Configuration of the gettext extension
 * Utlity tool to generate .mo files
 * Utility tool for extracting template strings
