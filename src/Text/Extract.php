@@ -2,9 +2,12 @@
 
 namespace G4\Translate\Text;
 
+use jblond\TwigTrans\Translation;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+
 class Extract
 {
-
     private $templatesPath;
 
     private $tmpPath;
@@ -71,11 +74,11 @@ class Extract
 
     private function initTwig()
     {
-        $this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem($this->templatesPath), [
+        $this->twig = new Environment(new FilesystemLoader($this->templatesPath), [
             'cache'       => $this->tmpPath,
             'auto_reload' => true
         ]);
-        $this->twig->addExtension(new \Twig_Extensions_Extension_I18n());
+        $this->twig->addExtension(new Translation());
         return $this;
     }
 

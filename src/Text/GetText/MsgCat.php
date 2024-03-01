@@ -1,13 +1,11 @@
 <?php
 
-
 namespace G4\Translate\Text\GetText;
 
 use G4\ValueObject\RelativePath;
 
 class MsgCat
 {
-
     const COMMAND_NAME          = 'msgcat';
 
     const OPTION_USE_FIRST      = '--use-first';

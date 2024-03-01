@@ -11,6 +11,7 @@ vendor
 
 tests/unit/coverage
 tests/functional/coverage
+tests/unit/.phpunit.result.cache
 
 .buildpath
 .project

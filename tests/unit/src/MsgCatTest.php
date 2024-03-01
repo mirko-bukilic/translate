@@ -1,12 +1,11 @@
 <?php
 
-
 use G4\Translate\Text\GetText\MsgCat;
 use G4\ValueObject\RelativePath;
+use PHPUnit\Framework\TestCase;
 
-class MsgCatTest extends PHPUnit_Framework_TestCase
+class MsgCatTest extends TestCase
 {
-
     private $filesFromMock;
 
     /**
@@ -36,7 +35,7 @@ class MsgCatTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(in_array('file1.po file2.po', $data));
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->filesFromMock = [
             'file1.po',
@@ -49,7 +48,7 @@ class MsgCatTest extends PHPUnit_Framework_TestCase
         $this->msgCat = new MsgCat($this->filesFromMock, $this->outputFileMock);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->filesFromMock    = null;
         $this->outputFileMock   = null;

@@ -1,12 +1,9 @@
 <?php
 
-
 namespace G4\Translate;
-
 
 class File
 {
-
     const EXTENSION_PO = '.po';
     const EXTENSION_MO = '.mo';
 
